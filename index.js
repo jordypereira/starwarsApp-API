@@ -28,6 +28,4 @@ app.use(graphqlEndpoint, bodyParser.json(), graphqlExpress({ schema, context: { 
 app.use('/graphiql', graphiqlExpress({ endpointURL: graphqlEndpoint }));
 
 // Start the server
-models.sequelize.sync().then(() => app.listen(3001, () => {
-  console.log('Go to http://localhost:3001/graphiql to run queries!');
-}));
+models.sequelize.sync().then(() => app.listen(process.env.PORT));
