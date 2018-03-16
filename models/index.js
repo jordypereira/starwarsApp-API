@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
+import { DB } from '../config';
 
-const sequelize = new Sequelize('postgres://nhlgudacwpbmui:4f1d4c0a71438522e818818cbe76e03bba35bb9741bbdd69d921460988ade9ac@ec2-54-243-185-195.compute-1.amazonaws.com:5432/d9h6t49uj0mgn4', {
+const sequelize = new Sequelize(DB.url, {
   dialect: 'postgres',
   operatorsAliases: Sequelize.Op,
   define: {
