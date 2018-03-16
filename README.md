@@ -1,7 +1,7 @@
-#Star Wars Planets API
+# Star Wars Planets API
 
 An API I made to store star wars planets in.
-##uses
+## uses
 - NodeJS
 - Express
 - Apollo
