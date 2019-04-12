@@ -1,13 +1,31 @@
 import Sequelize from 'sequelize';
 import { DB } from '../config';
 
-const sequelize = new Sequelize(DB.url, {
-  dialect: 'postgres',
-  operatorsAliases: Sequelize.Op,
-  define: {
-    underscored: true,
-  },
-});
+let sequelize;
+
+if (DB.url) {
+  sequelize = new Sequelize(DB.url, {
+    dialect: 'postgres',
+    operatorsAliases: Sequelize.Op,
+    define: {
+      underscored: true,
+    },
+  });
+}
+else {
+  sequelize = new Sequelize(
+    DB.database,
+    DB.user,
+    DB.password, {
+      host: DB.host,
+      dialect: 'postgres',
+      operatorsAliases: Sequelize.Op,
+      define: {
+        underscored: true,
+      },
+    },
+  );
+}
 
 const models = {
   Planet: sequelize.import('./planet'),
